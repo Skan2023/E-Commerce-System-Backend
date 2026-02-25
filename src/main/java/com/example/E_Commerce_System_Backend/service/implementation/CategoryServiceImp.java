@@ -36,7 +36,7 @@ public class CategoryServiceImp implements CategoryService {
 
     @Override
     public Category updateCategory(CategoryRequest categoryRequest, Integer id) {
-        return null;
+        return categoryRepository.updateCategory(categoryRequest, id);
     }
 
     @Override

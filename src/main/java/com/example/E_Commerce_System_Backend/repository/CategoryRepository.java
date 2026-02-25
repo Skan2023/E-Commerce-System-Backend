@@ -28,6 +28,13 @@ public interface CategoryRepository {
     Category createCategory(@Param("category") CategoryRequest categoryRequest);
 
     @Select("""
+            UPDATE categories SET name=#{category.name} WHERE category_id=#{id}
+            returning *;
+            """)
+    @ResultMap("categoryMapper")
+    Category updateCategory(@Param("category") CategoryRequest categoryRequest, Integer id);
+
+    @Select("""
             delete from categories WHERE category_id = #{id}
             returning *
             """)

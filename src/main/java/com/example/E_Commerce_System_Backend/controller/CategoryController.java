@@ -72,6 +72,21 @@ public class CategoryController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<ApiResponse<Category>> updateCategory(@RequestBody CategoryRequest categoryRequest, Integer id) {
+        Category category = categoryService.updateCategory(categoryRequest, id);
+
+        ApiResponse<Category> response = ApiResponse.<Category>builder()
+                .message("Category updated successfully.")
+                .payload(category)
+                .status(HttpStatus.OK)
+                .timestamp(LocalDateTime.now())
+                .build();
+
+        return ResponseEntity.status(HttpStatus.OK).body(response);
+
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<ApiResponse<Category>> deleteCategoryById(@PathVariable Integer id) {
         Category category = categoryService.deleteCategory(id);
