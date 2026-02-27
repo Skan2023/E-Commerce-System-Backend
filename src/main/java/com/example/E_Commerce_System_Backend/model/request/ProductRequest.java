@@ -1,4 +1,4 @@
-package com.example.E_Commerce_System_Backend.model;
+package com.example.E_Commerce_System_Backend.model.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,10 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Product {
-    private Integer productId;
+public class ProductRequest {
     private String name;
     private Double price;
     private Integer stock;
-    private Category categoryId;
+    private Integer categoryId;
 }
